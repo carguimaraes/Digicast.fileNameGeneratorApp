@@ -13,6 +13,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.Tag;
+
 @SpringBootApplication
 public class Principal implements CommandLineRunner {
 	
@@ -27,14 +32,31 @@ public class Principal implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		  LOG.info("EXECUTANDO LEITURA...");
 		
+		String paqhArq="/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/Silversea Expeditions Library/Destination/Antarctica/EX0015.tif";
+		
+	    System.out.println("===================================================");
+		File f = new File(paqhArq);
+		Metadata metadata = ImageMetadataReader.readMetadata(f);
+		
+		
+		for (Directory directory : metadata.getDirectories()) {
+		    for (Tag tag : directory.getTags()) {
+		        System.out.println(tag);
+		    }
+		}
+	   System.out.println("===================================================");
+	 
+
+		
+	}
+	
+	private void copiaInit() throws IOException {
+		 LOG.info("EXECUTANDO LEITURA...");
+			
 		  Stream<Path> w = Files.walk(Paths.get("/home/carguimaraes/Documentos/gma"));
 		  
-		//  w.filter(Files::isRegularFile)
-		 // 	.forEach(System.out::println);
-		 // w.forEach(System.out::println);
-		  
+		   
 		  w.sorted().forEach((x)->{
 	          if( x.toFile().isDirectory()) {
 	        	  System.out.println("--------------"+x.normalize());
