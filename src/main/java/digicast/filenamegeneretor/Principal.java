@@ -1,6 +1,7 @@
 package digicast.filenamegeneretor;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,8 +17,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.StringValue;
 import com.drew.metadata.Tag;
+import com.drew.metadata.iptc.IptcDirectory;
 
+//https://github.com/drewnoakes/metadata-extractor/wiki/Getting-Started-(Java)
 @SpringBootApplication
 public class Principal implements CommandLineRunner {
 	
@@ -35,18 +39,49 @@ public class Principal implements CommandLineRunner {
 		
 		String paqhArq="/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/Silversea Expeditions Library/Destination/Antarctica/EX0015.tif";
 		
+		paqhArq="/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/EX5812.tif";
+		
 	    System.out.println("===================================================");
 		File f = new File(paqhArq);
 		Metadata metadata = ImageMetadataReader.readMetadata(f);
 		
+/*		 
+		com.drew.metadata.exif.ExifIFD0Directory directory2  = metadata.getFirstDirectoryOfType(com.drew.metadata.exif.ExifIFD0Directory.class);
+		StringValue date = directory2.getStringValue(com.drew.metadata.exif.ExifIFD0Directory.TAG_IMAGE_DESCRIPTION);
+		System.out.println("==============>"+date.toString());
 		
+*/		
+		  
+	 
+		System.out.println(".com.drew.metadata.iptc.IptcDirectory");
+	    Field[] fx= com.drew.metadata.iptc.IptcDirectory.class.getDeclaredFields();
+	 
+		
+	   for(Field fff: fx) {
+		   System.out.println("...TAG-NAME: "+fff.getName());
+	   }
+	    
+	   System.out.println("------------------------------------------------------------------");
+		System.out.println(".com.drew.metadata.exif.ExifDirectoryBase");
+	   fx= com.drew.metadata.exif.ExifDirectoryBase.class.getDeclaredFields();	 
+	   for(Field fff: fx) {
+		   System.out.println("...TAG-NAME: "+fff.getName());
+	   }
+		
+		/*
 		for (Directory directory : metadata.getDirectories()) {
+			
+			System.out.println(".DIRETORY CLASSE: "+directory.getClass().getName()+ " --- DIRETORY NAME: "+directory.getName() );
+		 	
 		    for (Tag tag : directory.getTags()) {
-		        System.out.println(tag);
+		        System.out.println("...TAG-NAME: "+tag.getTagName()+"--->"+tag.getDescription());
+		         
+		       // System.out.println(tag);
 		    }
 		}
+		
 	   System.out.println("===================================================");
-	 
+	  */
 
 		
 	}

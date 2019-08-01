@@ -1,0 +1,9 @@
+31/07/2019
+
+https://github.com/drewnoakes/metadata-extractor/wiki/Getting-Started-(Java)
+https://github.com/drewnoakes/metadata-extractor/wiki/SampleOutput
+
+https://iptc.org/std/photometadata/specification/mapping/iptc-pmd-newsmlg2.html
+
+IPTC
+EXIF
