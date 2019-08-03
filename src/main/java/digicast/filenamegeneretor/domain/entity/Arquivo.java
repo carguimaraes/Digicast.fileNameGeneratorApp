@@ -1,12 +1,14 @@
 package digicast.filenamegeneretor.domain.entity;
 
+import java.util.UUID;
+
 import lombok.Getter;
 import lombok.Setter;
 
 public class Arquivo {
 	
-	@Getter @Setter
-	private long id;
+	@Getter 
+	private UUID id;
 
 	@Getter @Setter
 	private String nome;
@@ -20,7 +22,7 @@ public class Arquivo {
 	
 	public Arquivo() {}
 	
-	public Arquivo(long id, String nome, String path, String metadados) {
+	public Arquivo(UUID id, String nome, String path, String metadados) {
 		super();
 		this.id = id;
 		this.nome = nome;

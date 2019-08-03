@@ -32,10 +32,13 @@ public class Principal  implements CommandLineRunner {
 	private  ProcessaArquivoController  processaArquivoController; 
 
 	public static void main(String[] args) {
-		log.info("INICIO ...");
+		log.info("*******************************");
+		log.info("INICIO");
+		log.info("*******************************");
 		SpringApplication.run(Principal.class, args);
+		log.info("*******************************");
 		log.info("FIM");
-
+		log.info("*******************************");
 	}
 	
 	@Override

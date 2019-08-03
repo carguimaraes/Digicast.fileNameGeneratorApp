@@ -15,15 +15,15 @@ https://www.tfaforms.com/4752713
 [E] foram informados os paramentros de entrada
 
     .ROOT FOLDER FOR FILE RENAME: dir_1
-    .BUSINESS UNIT..............: SYD
-    .DEPARTMENT.................: SPPJ
-    .METADATA TYPE..............: MAPS
-    .VOYAGE-ID..................: VID
-    .PROJECT-ID.................: PID
-    .JOB-ID.....................: JID
+    .BUSINESS UNIT..............: SYD *
+    .DEPARTMENT.................: SPPJ *
+    .METADATA TYPE..............: MAPS *
+    .VOYAGE-ID..................: VID *
+    .PROJECT-ID.................: PID *
+    .JOB-ID.....................: JID *
     .SHIP-ID....................: SILVER SPIRIT
     .DESTINATION................: CARIBE
-    .EXPORT DATE................: 20190803
+    .EXPORT DATE................: 20190803 *
     .COLLECTION.................: DIGCAST
 
 [WHEN] pressionar botao Execute processamento
@@ -40,6 +40,20 @@ https://www.tfaforms.com/4752713
 
 
 ------------------------------------
+.dir_1/
+       ...dir_11/
+       ....imagem_01.tif
+       ....imagem_02.tif
+       ...dir_12/
+       ....imagem_aa.tif
+OUTPUT
+ .dir_1/generator
+  SYD_SPPJ_20081225_MAPS_Vid_Pid_Jid_1imagem_01.tif
+  SYD_SPPJ_20081225_MAPS_Vid_Pid_Jid_1imagem_02.tif
+  SYD_SPPJ_20081225_MAPS_Vid_Pid_Jid_1imagem_aa.tif
+  + arquivo de upload  NOME DA COLLECTION_METADATA TYPE.TXT
+    DIGICAST_MAPS.txt
+
 
 
 
