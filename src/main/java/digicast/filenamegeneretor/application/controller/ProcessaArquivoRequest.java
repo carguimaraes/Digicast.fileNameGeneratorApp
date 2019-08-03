@@ -8,12 +8,12 @@ import digicast.filenamegeneretor.domain.entity.Arquivo;
 import lombok.Getter;
 import lombok.Setter;
 
-public class InfoRequest {
+public class ProcessaArquivoRequest {
 	
 	private List<String> listMsg;
 	
 	
-	public InfoRequest(){
+	public ProcessaArquivoRequest(){
 		this.listMsg=new ArrayList<>();
 	}
 	

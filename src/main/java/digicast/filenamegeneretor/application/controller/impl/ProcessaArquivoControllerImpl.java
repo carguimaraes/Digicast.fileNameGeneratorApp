@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -20,7 +21,8 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Metadata;
 
 import digicast.filenamegeneretor.Principal;
-import digicast.filenamegeneretor.application.controller.InfoRequest;
+import digicast.filenamegeneretor.application.controller.ProcessaArquivoRequest;
+import digicast.filenamegeneretor.application.controller.ProcessaArquivoResponse;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoController;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,25 +33,27 @@ public class ProcessaArquivoControllerImpl implements ProcessaArquivoController 
 	 
 
 	@Override
-	public void lerDiretorio(InfoRequest infoRequest) {
+	public ProcessaArquivoResponse lerDiretorio(ProcessaArquivoRequest processaArquivoRequest) {
 		
 		List<String> lstMsg=new ArrayList<>();
 		
 		log.info("===================================================");
 		log.info("INICIO PROJETO.... GMA TESTE-GMA-23333");
 		log.info("===================================================");
-	 
-		//Valida faolder
-		//Valida nomes Obrigagorios
-		
-		if(infoRequest==null) {
-			lstMsg.add("infoRequest nao pode ser null");
-			return;
+	 	
+		if(processaArquivoRequest==null) {
+			 
+			return  new ProcessaArquivoResponse(  Arrays.asList("InfoRequest nao pode ser null"));
 		}
 		
 		 
+		if(!processaArquivoRequest.isvalid()) {
+			return new ProcessaArquivoResponse(processaArquivoRequest.getMensagens());
+		}
 		
+		//verifica se o nome diretorio existe
 		
+		return new ProcessaArquivoResponse();
 		
 	}
 
