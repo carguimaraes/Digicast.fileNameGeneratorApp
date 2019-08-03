@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Component;
 
 import digicast.filenamegeneretor.domain.entity.Arquivo;
+import digicast.filenamegeneretor.domain.exception.DiretorioException;
 import digicast.filenamegeneretor.domain.factory.ArquivoRepositoryFactory;
 import digicast.filenamegeneretor.domain.repository.ArquivoRepository;
 import digicast.filenamegeneretor.infrastructure.repository.ArquivoRepositoryImpl;
@@ -21,11 +22,17 @@ import digicast.filenamegeneretor.infrastructure.repository.ArquivoRepositoryImp
 public class ArquivoRepositoryFactoryImpl implements ArquivoRepositoryFactory {
 
 	@Override
-	public ArquivoRepository getNew(String pathRoot) throws IOException {
+	public ArquivoRepository getNew(String pathRoot) throws DiretorioException{
 
 		List<Arquivo> listArquivo = new ArrayList<>();
-
-		Stream<Path> w = Files.walk(Paths.get(pathRoot));
+		Stream<Path> w=null;
+		
+		try {
+			w = Files.walk(Paths.get(pathRoot));
+			
+		} catch (IOException e) {
+		  throw new DiretorioException(e.getMessage(),e);
+		}
 
 		w.sorted().forEach((x) -> {
 			if (x.toFile().isFile()) {

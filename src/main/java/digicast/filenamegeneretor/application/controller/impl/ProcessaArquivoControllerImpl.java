@@ -6,6 +6,8 @@ import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
@@ -18,6 +20,7 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Metadata;
 
 import digicast.filenamegeneretor.Principal;
+import digicast.filenamegeneretor.application.controller.InfoRequest;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoController;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,12 +31,25 @@ public class ProcessaArquivoControllerImpl implements ProcessaArquivoController 
 	 
 
 	@Override
-	public void lerDiretorio() {
+	public void lerDiretorio(InfoRequest infoRequest) {
+		
+		List<String> lstMsg=new ArrayList<>();
 		
 		log.info("===================================================");
 		log.info("INICIO PROJETO.... GMA TESTE-GMA-23333");
 		log.info("===================================================");
 	 
+		//Valida faolder
+		//Valida nomes Obrigagorios
+		
+		if(infoRequest==null) {
+			lstMsg.add("infoRequest nao pode ser null");
+			return;
+		}
+		
+		 
+		
+		
 		
 	}
 

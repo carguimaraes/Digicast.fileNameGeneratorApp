@@ -2,5 +2,5 @@ package digicast.filenamegeneretor.application.controller;
 
 public interface ProcessaArquivoController {
 
-	public void lerDiretorio();
+	public void lerDiretorio(InfoRequest infoRequest);
 }

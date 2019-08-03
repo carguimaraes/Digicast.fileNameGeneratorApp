@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import digicast.filenamegeneretor.Principal;
 import digicast.filenamegeneretor.application.controller.impl.ProcessaArquivoControllerImpl;
 import digicast.filenamegeneretor.domain.entity.Arquivo;
+import digicast.filenamegeneretor.domain.exception.DiretorioException;
 import digicast.filenamegeneretor.domain.factory.ArquivoRepositoryFactory;
 import digicast.filenamegeneretor.domain.repository.ArquivoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -33,9 +34,9 @@ public class LeArquivoTest {
 	@Autowired
 	private ArquivoRepositoryFactory arquivoRepositoryFactory;
 	
-	@Test
+	//@Test
 	public void geraArquivos()  {
-		String paqhArq = "/home/carguimaraes/Documentos/gma";
+		String paqhArq = "/home/carguimaraes/Documentos/gmax";
 		//String paqhArq = "/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/Silversea Expeditions Library";
 		
 	 
@@ -51,10 +52,10 @@ public class LeArquivoTest {
 				System.out.println("PATH:"+item.getPath());
 				System.out.println("================================================");
 			}
-		} catch (IOException e) {
+		} catch (  DiretorioException e) {
 			log.error("==========================================");
 			log.error("ERRO LEITURA DIRETORIO");
-		    log.error(e.getMessage(),e);
+		    log.error(e.getMessage() + "- "+e.getClass().getName());
 			log.error("==========================================");
 		}
 		

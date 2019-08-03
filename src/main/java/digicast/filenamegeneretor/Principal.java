@@ -16,6 +16,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import digicast.filenamegeneretor.application.controller.InfoRequest;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoController;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,7 +45,10 @@ public class Principal  implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		 processaArquivoController.lerDiretorio();
+		
+		InfoRequest infoRequest=new InfoRequest();
+		
+		 processaArquivoController.lerDiretorio(infoRequest);
 		
 
 	}
