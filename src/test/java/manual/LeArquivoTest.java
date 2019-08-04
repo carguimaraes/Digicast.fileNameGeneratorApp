@@ -34,26 +34,22 @@ public class LeArquivoTest {
 	@Autowired
 	private ArquivoRepositoryFactory arquivoRepositoryFactory;
 	
-	@Test
+	//@Test
 	public void verificarPastaExiste() {
 		
-		String path="/home/carguimaraes/Documentos/gma/dir2/G222/t.txt";   
+		//String path="/home/carguimaraes/Documentos/gma/dir2/G222/t.txt";
+		String path="/home/carguimaraes/Documentos/gma/dir2"; 
 		File file=new File(path);
 		
 		log.info("====>TESTE INICIO");
 		
-		 if(file.isFile()) {
-			 log.info("É ARQUIVO");
-		 } 
+		 if(!file.isDirectory()) {
+			 log.info("NAO E DIRETORIO VALIDO");
+		 }else {
+			 log.info("VALIDO");
+		 }
 		
-		
-		if (! ( new File(path).exists())) {
-			log.info("NAO EXISTE PASTA");
-            
-        }else
-        {
-        	log.info("PASTA EXISTE");
-        }
+		 
 		
 	}
 		 

@@ -48,7 +48,10 @@ public class ProcessaArquivoControllerImpl implements ProcessaArquivoController 
 		}
 		
 	 	File file=new File( processaArquivoRequest.getRootFolder());
-	 	
+	 	if(!file.isDirectory()) {
+	 		return  new ProcessaArquivoResponse(  Arrays.asList("RootFolder não valida"));
+		}
+	 	 
 	 	
 		
 		//verifica se o nome diretorio existe
