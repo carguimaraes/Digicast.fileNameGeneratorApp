@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.drew.imaging.ImageMetadataReader;
@@ -23,6 +24,7 @@ import com.drew.metadata.Metadata;
 import digicast.filenamegeneretor.Principal;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoRequest;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoResponse;
+import digicast.filenamegeneretor.application.service.PlanificarDiretorio;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoController;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +32,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class ProcessaArquivoControllerImpl implements ProcessaArquivoController  {
 	
-	 
+	@Autowired
+	private PlanificarDiretorio planificarDiretorio;
 
 	@Override
 	public ProcessaArquivoResponse lerDiretorio(ProcessaArquivoRequest processaArquivoRequest) {
@@ -53,6 +56,7 @@ public class ProcessaArquivoControllerImpl implements ProcessaArquivoController 
 		}
 	 	 
 	 	
+	 	planificarDiretorio.executar(processaArquivoRequest);
 		
 		//verifica se o nome diretorio existe
 		

@@ -50,7 +50,9 @@ public class Principal  implements CommandLineRunner {
 		
 		ProcessaArquivoRequest processaArquivoRequest=new ProcessaArquivoRequest();
 		
-		processaArquivoRequest.setRootFolder("/home/carguimaraes/Documentos/gma/dir2/G222");
+		String paqhArq = "/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/Silversea Expeditions Library";
+		
+		processaArquivoRequest.setRootFolder(paqhArq);
 		processaArquivoRequest.setBusinessUnit("SYD");
 		processaArquivoRequest.setDepartment("SPPJ");
 		processaArquivoRequest.setMetadataType("MAPS");
