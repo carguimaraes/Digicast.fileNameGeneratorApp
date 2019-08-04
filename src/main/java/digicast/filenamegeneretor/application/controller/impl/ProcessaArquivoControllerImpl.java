@@ -37,10 +37,6 @@ public class ProcessaArquivoControllerImpl implements ProcessaArquivoController 
 		
 		List<String> lstMsg=new ArrayList<>();
 		
-		log.info("===================================================");
-		log.info("INICIO PROJETO.... GMA TESTE-GMA-23333");
-		log.info("===================================================");
-	 	
 		if(processaArquivoRequest==null) {
 			 
 			return  new ProcessaArquivoResponse(  Arrays.asList("InfoRequest nao pode ser null"));
@@ -50,6 +46,10 @@ public class ProcessaArquivoControllerImpl implements ProcessaArquivoController 
 		if(!processaArquivoRequest.isvalid()) {
 			return new ProcessaArquivoResponse(processaArquivoRequest.getMensagens());
 		}
+		
+	 	File file=new File( processaArquivoRequest.getRootFolder());
+	 	
+	 	
 		
 		//verifica se o nome diretorio existe
 		

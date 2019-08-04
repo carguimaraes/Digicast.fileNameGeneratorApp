@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
@@ -17,6 +18,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoRequest;
+import digicast.filenamegeneretor.application.controller.ProcessaArquivoResponse;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoController;
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,11 +48,29 @@ public class Principal  implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		
-		ProcessaArquivoRequest infoRequest=new ProcessaArquivoRequest();
+		ProcessaArquivoRequest processaArquivoRequest=new ProcessaArquivoRequest();
 		
-		 processaArquivoController.lerDiretorio(infoRequest);
+		 
+		
+		ProcessaArquivoResponse processaArquivoResponse=  processaArquivoController.lerDiretorio(processaArquivoRequest);
 		
 
+		if(processaArquivoResponse.isvalid()) {
+			log.info("*******************************");
+			log.info("SUCESSO");
+			log.info("*******************************");
+		} else {
+			log.info("*******************************");
+			log.info("FALHA");
+			log.info("*******************************");
+			List<String> listMsg=processaArquivoResponse.getMensagens();
+			for(String item :listMsg) {
+				log.info("ERRO MSG: "+item);
+			}
+			
+			log.info("*******************************");
+		}
+		
 	}
 
 	 

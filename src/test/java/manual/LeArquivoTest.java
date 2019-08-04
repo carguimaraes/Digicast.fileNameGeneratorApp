@@ -34,6 +34,30 @@ public class LeArquivoTest {
 	@Autowired
 	private ArquivoRepositoryFactory arquivoRepositoryFactory;
 	
+	@Test
+	public void verificarPastaExiste() {
+		
+		String path="/home/carguimaraes/Documentos/gma/dir2/G222/t.txt";   
+		File file=new File(path);
+		
+		log.info("====>TESTE INICIO");
+		
+		 if(file.isFile()) {
+			 log.info("É ARQUIVO");
+		 } 
+		
+		
+		if (! ( new File(path).exists())) {
+			log.info("NAO EXISTE PASTA");
+            
+        }else
+        {
+        	log.info("PASTA EXISTE");
+        }
+		
+	}
+		 
+	
 	//@Test
 	public void geraArquivos()  {
 		String paqhArq = "/home/carguimaraes/Documentos/gmax";

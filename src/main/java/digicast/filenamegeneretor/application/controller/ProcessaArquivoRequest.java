@@ -58,7 +58,9 @@ public class ProcessaArquivoRequest {
 	
 	public boolean isvalid() {
 		
-		return listMsg.isEmpty();
+		 
+		
+		return validate();
 	}
 	
 	public boolean validate() {
@@ -96,7 +98,7 @@ public class ProcessaArquivoRequest {
 		}
 		 
 		
-		return isvalid();
+		return listMsg.isEmpty();
 		
 	}
 	
