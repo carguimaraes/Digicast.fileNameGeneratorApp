@@ -23,10 +23,10 @@ import com.drew.metadata.exif.ExifIFD0Directory;
 import digicast.filenamegeneretor.Principal;
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoController;
 
-@RunWith(SpringRunner.class)
-//@SpringBootTest(classes =Principal.class)
-//para nao executar o Run é mais simples que usar:  @SpringBootTest(classes =Principal.class)
-@ContextConfiguration(classes = Principal.class, initializers = ConfigFileApplicationContextInitializer.class)
+//@RunWith(SpringRunner.class)
+//////@SpringBootTest(classes =Principal.class)
+/////para nao executar o Run é mais simples que usar:  @SpringBootTest(classes =Principal.class)
+//@ContextConfiguration(classes = Principal.class, initializers = ConfigFileApplicationContextInitializer.class)
 public class LeMetadadosTest {
 
 	@Autowired
@@ -54,7 +54,7 @@ public class LeMetadadosTest {
 
 	// @Ignore(value="usado para teste manual - comentar o ignore para executar o
 	// teste")
-     @Test
+  //   @Test
 	public void listaTags() throws ImageProcessingException, IOException {
 		String paqhArq = "/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/Silversea Expeditions Library/Destination/Antarctica/EX0015.tif";
 
@@ -106,7 +106,7 @@ public class LeMetadadosTest {
 	}
 
 //	@Ignore(value="usado para teste manual - comentar o ignore para executar o teste")
-	@Test
+//	@Test
 	public void diretorios() throws ImageProcessingException, IOException {
 
 		String paqhArq = "/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/Silversea Expeditions Library/Destination/Antarctica/EX0015.tif";

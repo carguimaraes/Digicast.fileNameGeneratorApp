@@ -27,8 +27,8 @@ import digicast.filenamegeneretor.domain.repository.ArquivoRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RunWith(SpringRunner.class)
-@ContextConfiguration(classes = Principal.class, initializers = ConfigFileApplicationContextInitializer.class)
+//@RunWith(SpringRunner.class)
+//@ContextConfiguration(classes = Principal.class, initializers = ConfigFileApplicationContextInitializer.class)
 public class LeArquivoTest {
 	
 	@Autowired
@@ -101,9 +101,9 @@ public class LeArquivoTest {
 			 
 				//String uuidStr = uuid.toString();
 				
-				Arquivo arquivo= new Arquivo(UUID.randomUUID(),nomeArquivo,onlyPath,null);
+		//		Arquivo arquivo= new Arquivo(UUID.randomUUID(),nomeArquivo,onlyPath,null);
 				
-		return arquivo;
+		return null; //arquivo;
 	}
 	
 	
