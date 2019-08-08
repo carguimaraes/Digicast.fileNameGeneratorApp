@@ -22,17 +22,13 @@ import digicast.filenamegeneretor.application.controller.ProcessaArquivoResponse
 import digicast.filenamegeneretor.application.controller.ProcessaArquivoController;
 import lombok.extern.slf4j.Slf4j;
 
-
 //https://github.com/drewnoakes/metadata-extractor/wiki/Getting-Started-(Java)
 @Slf4j
 @SpringBootApplication
-public class Principal  implements CommandLineRunner {
-	
+public class Principal implements CommandLineRunner {
 
-	 
-	
 	@Autowired
-	private  ProcessaArquivoController  processaArquivoController; 
+	private ProcessaArquivoController processaArquivoController;
 
 	public static void main(String[] args) {
 		log.info("*******************************");
@@ -43,15 +39,20 @@ public class Principal  implements CommandLineRunner {
 		log.info("FIM");
 		log.info("*******************************");
 	}
-	
+
 	@Override
 	public void run(String... args) throws Exception {
-		
-		
-		ProcessaArquivoRequest processaArquivoRequest=new ProcessaArquivoRequest();
-		
-		String paqhArq = "/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/Silversea Expeditions Library";
-		
+		String paqhArq = "";
+
+		if (args.length > 0) {
+
+			paqhArq = args[0]; // "/home/carguimaraes/Documentos/Silversea Expeditions
+								// Library-20190727T143910Z-001/Silversea Expeditions Library";
+		//	paqhArq="/home/carguimaraes/Documentos/Silversea Expeditions Library-20190727T143910Z-001/";
+		}
+
+		ProcessaArquivoRequest processaArquivoRequest = new ProcessaArquivoRequest();
+
 		processaArquivoRequest.setRootFolder(paqhArq);
 		processaArquivoRequest.setBusinessUnit("SYD");
 		processaArquivoRequest.setDepartment("SPPJ");
@@ -60,13 +61,11 @@ public class Principal  implements CommandLineRunner {
 		processaArquivoRequest.setProjectId("PID");
 		processaArquivoRequest.setJobId("JID");
 		processaArquivoRequest.setExportDate("20190803");
-		
-		 
-		
-		ProcessaArquivoResponse processaArquivoResponse=  processaArquivoController.lerDiretorio(processaArquivoRequest);
-		
 
-		if(processaArquivoResponse.isvalid()) {
+		ProcessaArquivoResponse processaArquivoResponse = processaArquivoController
+				.lerDiretorio(processaArquivoRequest);
+
+		if (processaArquivoResponse.isvalid()) {
 			log.info("*******************************");
 			log.info("SUCESSO");
 			log.info("*******************************");
@@ -74,18 +73,14 @@ public class Principal  implements CommandLineRunner {
 			log.info("*******************************");
 			log.info("FALHA");
 			log.info("*******************************");
-			List<String> listMsg=processaArquivoResponse.getMensagens();
-			for(String item :listMsg) {
-				log.info("ERRO MSG: "+item);
+			List<String> listMsg = processaArquivoResponse.getMensagens();
+			for (String item : listMsg) {
+				log.info("ERRO MSG: " + item);
 			}
-			
+
 			log.info("*******************************");
 		}
-		
+
 	}
-
-	 
-
-	 
 
 }

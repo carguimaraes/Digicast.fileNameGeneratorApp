@@ -1,6 +1,7 @@
 package digicast.filenamegeneretor.domain.entity;
 
  
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,9 +19,6 @@ public class Arquivo {
 	@Getter @Setter
 	private String path;
 	
-	@Getter @Setter
-	private String metadados;
-	
 	private List<MetaDado> lstIpt;
 	private List<MetaDado> lstExifIFD0;
 	
@@ -31,6 +29,17 @@ public class Arquivo {
 		this.id = id;
 		this.nome = nome;
 		this.path = path;
-		this.metadados = metadados;
+		this.lstIpt=lstIpt;
+		this.lstExifIFD0=lstExifIFD0;
+		 
+	}
+	
+	public List<MetaDado> getLstIpt() {
+		 
+		return  Collections.unmodifiableList(lstIpt);
+	}
+	public List<MetaDado> getLstExifIFD0() {
+		 
+		return  Collections.unmodifiableList(lstExifIFD0);
 	}
 }
