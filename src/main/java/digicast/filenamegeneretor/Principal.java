@@ -54,8 +54,8 @@ public class Principal implements CommandLineRunner {
 		ProcessaArquivoRequest processaArquivoRequest = new ProcessaArquivoRequest();
 
 		processaArquivoRequest.setRootFolder(paqhArq);
-		processaArquivoRequest.setBusinessUnit("SYD");
-		processaArquivoRequest.setDepartment("SPPJ");
+		processaArquivoRequest.setBusinessUnit("MC");
+		processaArquivoRequest.setDepartment("CRHQ");
 		processaArquivoRequest.setMetadataType("MAPS");
 		processaArquivoRequest.setVoyageId("VID");
 		processaArquivoRequest.setProjectId("PID");
